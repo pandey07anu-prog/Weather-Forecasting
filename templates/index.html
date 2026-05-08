@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Forecasting</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="card">
+
+    <h1>🌤 Weather Forecasting</h1>
+
+    <p class="subtitle">
+        Predict temperature using Machine Learning
+    </p>
+
+    <form action="/predict" method="post">
+
+        <div class="input-group">
+            <label>Humidity</label>
+            <input type="number"
+                   step="any"
+                   name="humidity"
+                   placeholder="Enter Humidity"
+                   required>
+        </div>
+
+        <div class="input-group">
+            <label>Wind Speed</label>
+            <input type="number"
+                   step="any"
+                   name="windspeed"
+                   placeholder="Enter Wind Speed"
+                   required>
+        </div>
+
+        <div class="input-group">
+            <label>Pressure</label>
+            <input type="number"
+                   step="any"
+                   name="pressure"
+                   placeholder="Enter Pressure"
+                   required>
+        </div>
+
+        <button type="submit">
+            Predict Temperature
+        </button>
+
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
